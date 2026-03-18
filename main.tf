@@ -4,7 +4,7 @@ terraform {
 
 module "vpc" {
   source  = "terraform-aws-modules/vpc/aws"
-  version = "5.0.0"
+  version = "6.1.1"
 
   name = "my-vpc"
   cidr = "10.0.0.0/16"
@@ -17,7 +17,7 @@ module "vpc" {
   enable_vpn_gateway = true
 
   tags = {
-    Terraform = "true"
+    Terraform   = "true"
     Environment = "dev"
   }
 }
