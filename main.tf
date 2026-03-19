@@ -4,7 +4,7 @@ terraform {
 
 module "vpc" {
   source  = "terraform-aws-modules/vpc/aws"
-  version = "6.1.1"
+  version = "3.0.0"
 
   name = "my-vpc"
   cidr = "10.0.0.0/16"
@@ -44,17 +44,11 @@ module "db" {
   maintenance_window = "Mon:00:00-Mon:03:00"
   backup_window      = "03:00-06:00"
 
-  # DB subnet group
   create_db_subnet_group = true
   subnet_ids             = ["subnet-12345678", "subnet-87654321"]
 
-  # DB parameter group
   family = "mysql8.0"
-
-  # DB option group
   major_engine_version = "8.0"
-
-  # Database Deletion Protection
   deletion_protection = false
 
   parameters = [
@@ -68,3 +62,4 @@ module "db" {
     }
   ]
 }
+
