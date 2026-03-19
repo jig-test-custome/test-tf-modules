@@ -15,9 +15,9 @@ jobs:
       - name: Check Terraform module version compliance
         shell: bash
         run: |
-          MODULE_SOURCE="terraform-aws-modules/vpc/aws"
-          CHECK_TYPE="version"
-          DESIRED_VALUE="6.1.1"
+          MODULE_SOURCE="github.com/jig-test-custome/test-tf-modules"
+          CHECK_TYPE="ref"
+          DESIRED_VALUE="main"
 
           FAILED=0
 
@@ -68,7 +68,7 @@ jobs:
           if [ $FAILED -ne 0 ]; then
             echo ""
             echo "Module version policy violation detected."
-            echo "Expected module 'terraform-aws-modules/vpc/aws' to use version='6.1.1'."
+            echo "Expected module 'github.com/jig-test-custome/test-tf-modules' to use ref='main'."
             echo "Run 'jig run' or merge the Jig reconciliation PR to fix this."
             exit 1
           fi
